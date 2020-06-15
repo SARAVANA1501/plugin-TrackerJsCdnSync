@@ -5,10 +5,10 @@
 Sync your tracker javascript files (tag-manager container files) to your favourite CDN.
 
 ##Supported Static file change events
-_Tag-Manager container Create_
+Tag-Manager container Create
 
 ##Supported CDN
-_AWS S3_
+AWS S3
 
 ##Configure Aws S3 CDN with IAM Key and Secret
 ```
