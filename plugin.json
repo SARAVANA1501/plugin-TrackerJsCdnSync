@@ -1,7 +1,7 @@
 {
     "name": "TrackerJsCdnSync",
     "description": "This is a short description that will be displayed on the Marketplace.",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "license": "MIT",
     "keywords": ["TrackerJs Cdn Sync", "cdn", "trackerjs", "matomojs"],
     "homepage": "https://github.com/SARAVANA1501/TrackerJS-CDN-Sync",
