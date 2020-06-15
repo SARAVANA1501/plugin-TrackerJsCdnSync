@@ -15,11 +15,11 @@ AWS S3
 [TrackerJsCdnSync]
 type = "aws-s3"
 auth-type = "IAM-User"
-bucket = ""
+bucket = "<Replace with your bucket>"
 version = "latest"
-region = ""
-key = ""
-secret = ""
+region = "<Replace with your region>"
+key = "<Replace with your key>"
+secret = "<Replace with your secret>"
 ```
 
 ## Configure Aws S3 CDN with Role based access
@@ -27,7 +27,7 @@ secret = ""
 [TrackerJsCdnSync]
 type = "aws-s3"
 auth-type = "IAM-Role"
-bucket = ""
+bucket = "<Replace with your bucket>"
 version = "latest"
-region = ""
+region = "<Replace with your region>"
 ```
