@@ -13,6 +13,6 @@
     "phpunit/phpunit": "^9.0"
   },
   "autoload": {
-    "psr-4": {"TrackerJsCdnSync\\": "src/"}
+    "psr-4": {"Piwik\\Plugins\\TrackerJsCdnSync\\": "."}
   }
 }

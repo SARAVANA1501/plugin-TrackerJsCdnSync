@@ -1,8 +1,9 @@
 <?php
 
-namespace Piwik\Plugins\TrackerJsCdnSync\Tests;
+namespace Piwik\Plugins\TrackerJsCdnSync;
 
 use PHPUnit\Framework\TestCase;
+use Piwik\Plugins\TrackerJsCdnSync\AwsS3\IOServiceForAwsS3;
 use Piwik\Plugins\TrackerJsCdnSync\IOServiceProvider;
 
 class IOServiceProviderTest extends TestCase
@@ -13,7 +14,7 @@ class IOServiceProviderTest extends TestCase
         $config['type'] = 'aws-s3';
         $fileHandler = new IOServiceProvider($config);
         $ioService = $fileHandler->GetIOService();
-        $this->assertEquals(new IOServiceProvider($config), $ioService);
+        $this->assertEquals(new IOServiceForAwsS3($config), $ioService);
     }
 
     public function testGetIOServiceThrowExceptionForInvalidConfig()
