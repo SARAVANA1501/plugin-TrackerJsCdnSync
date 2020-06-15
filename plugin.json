@@ -1,29 +1,26 @@
 {
     "name": "TrackerJsCdnSync",
-    "description": "Test desc",
-    "version": "0.1.0",
-    "theme": false,
+    "description": "This is a short description that will be displayed on the Marketplace.",
+    "version": "0.0.1",
+    "license": "MIT",
+    "keywords": ["TrackerJs Cdn Sync", "cdn", "trackerjs", "matomojs"],
+    "homepage": "https://github.com/SARAVANA1501/TrackerJS-CDN-Sync",
     "require": {
-        "piwik": ">=3.13.6-stable,<4.0.0-b1"
+        "piwik": ">=2.9.0"
     },
     "authors": [
         {
-            "name": "Matomo",
-            "email": "",
-            "homepage": ""
+            "name": "Saravanakumar",
+            "email": "saravananbscitm@gmail.com",
+            "homepage": "https://saravana1501.wordpress.com/"
         }
     ],
-    "support": {
-        "email": "",
-        "issues": "",
-        "forum": "",
-        "irc": "",
-        "wiki": "",
-        "source": "",
-        "docs": "",
-        "rss": ""
+    "archive": {
+        "exclude": ["/builds", "/test.log"]
     },
-    "homepage": "",
-    "license": "GPL v3+",
-    "keywords": []
+    "support": {
+        "email": "saravananbscitm@gmail.com",
+        "issues": "https://github.com/SARAVANA1501/TrackerJS-CDN-Sync/issues",
+        "source": "https://github.com/SARAVANA1501/TrackerJS-CDN-Sync"
+    }
 }
