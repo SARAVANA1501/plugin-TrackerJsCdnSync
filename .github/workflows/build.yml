@@ -32,9 +32,6 @@ jobs:
 
     - name: PHP Syntax Checker (Lint)
       uses: StephaneBour/actions-php-lint@7.4
-      with:
-        # Folder to check syntax
-        dir: src # optional, default is .
 
     - name: PHPUnit tests
       run: ./vendor/bin/phpunit --configuration tests/phpunit/phpunit.xml
