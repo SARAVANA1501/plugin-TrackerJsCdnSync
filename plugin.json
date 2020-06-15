@@ -4,7 +4,7 @@
     "version": "0.0.6-b1",
     "license": "MIT",
     "keywords": ["TrackerJs Cdn Sync", "cdn", "trackerjs", "matomojs"],
-    "homepage": "https://github.com/SARAVANA1501/TrackerJS-CDN-Sync",
+    "homepage": "https://github.com/SARAVANA1501/plugin-TrackerJsCdnSync",
     "require": {
         "piwik": ">=2.9.0,<4.0.0-b1"
     },
