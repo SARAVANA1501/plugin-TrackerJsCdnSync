@@ -6,7 +6,7 @@
     "keywords": ["TrackerJs Cdn Sync", "cdn", "trackerjs", "matomojs"],
     "homepage": "https://github.com/SARAVANA1501/TrackerJS-CDN-Sync",
     "require": {
-        "piwik": ">=2.9.0"
+        "piwik": ">=2.9.0,<4.0.0-b1"
     },
     "authors": [
         {
