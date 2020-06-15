@@ -1,0 +1,29 @@
+{
+    "name": "TrackerJsCdnSync",
+    "description": "Test desc",
+    "version": "0.1.0",
+    "theme": false,
+    "require": {
+        "piwik": ">=3.13.6-stable,<4.0.0-b1"
+    },
+    "authors": [
+        {
+            "name": "Matomo",
+            "email": "",
+            "homepage": ""
+        }
+    ],
+    "support": {
+        "email": "",
+        "issues": "",
+        "forum": "",
+        "irc": "",
+        "wiki": "",
+        "source": "",
+        "docs": "",
+        "rss": ""
+    },
+    "homepage": "",
+    "license": "GPL v3+",
+    "keywords": []
+}
