@@ -5,7 +5,11 @@
 Sync your tracker javascript files (tag-manager container files) to your favourite CDN.
 
 ## Supported Static file change events
+
+```
 Tag-Manager container Create
+Tag-Manager container Delete
+```
 
 ## Supported CDN
 AWS S3
