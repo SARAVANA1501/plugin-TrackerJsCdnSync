@@ -50,4 +50,12 @@ class IOServiceForAwsS3 implements IOService
         }
 
     }
+
+    public function DeleteFile($file)
+    {
+        $this->GetClient()->deleteObject([
+            'Bucket' => $this->config['bucket'],
+            'Key'    => basename($file)
+        ]);
+    }
 }

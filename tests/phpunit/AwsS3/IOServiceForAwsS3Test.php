@@ -32,6 +32,29 @@ class IOServiceForAwsS3Test extends TestCase
         $s3->AddFile($file);
     }
 
+    public function testDeleteFile()
+    {
+        $config['type'] = 'aws-s3';
+        $config['auth-type'] = 'IAM-Role';
+        $config['bucket'] = 'Test-Bucket';
+        $config['version'] = 'latest';
+        $config['region'] = 'Test-Region';
+        $file = 'test.js';
+
+        $awsClient_1 = $this->getMockBuilder(S3Client::class)
+            ->addMethods(['deleteObject'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $awsClient_1->expects($this->once())->method('deleteObject')->with([
+            'Bucket' => $config['bucket'],
+            'Key' => basename($file)
+        ]);
+
+        $s3 = new MockIOServiceForS3($awsClient_1, $config);
+        $s3->DeleteFile($file);
+    }
+
     public function testGetClientWithRoleBasedAccess()
     {
         $config['type'] = 'aws-s3';

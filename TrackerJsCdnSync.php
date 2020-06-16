@@ -15,13 +15,19 @@ class TrackerJsCdnSync extends \Piwik\Plugin
     public function registerEvents()
     {
         return array(
-            'TagManager.containerFileChanged' => array('function' => 'onStaticFileUpdate', 'after' => true)
+            'TagManager.containerFileChanged' => array('function' => 'onStaticFileUpdate', 'after' => true),
+            'TagManager.containerFileDeleted' => array('function' => 'onStaticFileDelete', 'after' => true)
         );
     }
 
     public function onStaticFileUpdate($file)
     {
         $this->getIOService()->AddFile($file);
+    }
+
+    public function onStaticFileDelete($file)
+    {
+        $this->getIOService()->DeleteFile($file);
     }
 
     private function getIOService(): IOService
