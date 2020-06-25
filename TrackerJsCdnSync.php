@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\TrackerJsCdnSync;
 
 use Piwik\Config;
+use Piwik\Plugins\LogViewer\Log\Parser\Piwik;
 
 class TrackerJsCdnSync extends \Piwik\Plugin
 {
@@ -16,7 +17,9 @@ class TrackerJsCdnSync extends \Piwik\Plugin
     {
         return array(
             'TagManager.containerFileChanged' => array('function' => 'onStaticFileUpdate', 'after' => true),
-            'TagManager.containerFileDeleted' => array('function' => 'onStaticFileDelete', 'after' => true)
+            'TagManager.containerFileDeleted' => array('function' => 'onStaticFileDelete', 'after' => true),
+            'TagManager.getContainerEmbedCode.end' => 'onGetTagManagerCode',
+            'API.TagManager.getContainerInstallInstructions.end' => 'onGetTagManagerCode'
         );
     }
 
@@ -35,6 +38,25 @@ class TrackerJsCdnSync extends \Piwik\Plugin
         $config = Config::getInstance()->TrackerJsCdnSync;
         $ioServiceProvider = new IOServiceProvider($config);
         return $ioServiceProvider->GetIOService();
+    }
+    public function onGetTagManagerCode(&$returnedValue, $extraInfo)
+    {
+        $myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
+        fwrite($myfile, "test string");
+        fwrite($myfile, $returnedValue);
+        fwrite($myfile, $extraInfo);
+        fclose($myfile);
+    }
+
+    private function getBaseUrl()
+    {
+        $piwikBase = str_replace(array('http://', 'https://'), '', \Piwik\SettingsPiwik::getPiwikUrl());
+        return rtrim($piwikBase, '/');
+    }
+
+    private static function getCdnUrl($includeProtocol = false)
+    {
+        return 'https://mycdn.mydomain.com/mypath'; // path should be read from a config
     }
 
 }
