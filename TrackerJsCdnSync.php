@@ -45,7 +45,7 @@ class TrackerJsCdnSync extends \Piwik\Plugin
         return Config::getInstance()->TrackerJsCdnSync;
     }
 
-    public function onGetTagManagerCode($returnedValue, $extraInfo)
+    public function onGetTagManagerCode(&$returnedValue, $extraInfo)
     {
         $config = $this->getConfig();
         $tagManagerEmbedCodeGenerator = new TagManagerEmbedCodeGenerator($config);

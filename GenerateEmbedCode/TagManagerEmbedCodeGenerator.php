@@ -12,24 +12,26 @@ class TagManagerEmbedCodeGenerator
         $this->config = $config;
     }
 
-    public function UpdateEmbedCode($containerJs, $returnedValue)
+    public function UpdateEmbedCode($containerJsUrl, &$embedCode)
     {
         if(empty($this->getCdnUrl()))
             return;
 
-        if (is_string($returnedValue))
+
+        $cdnUrl = self::getCdnUrl();
+        if (is_string($embedCode))
         {
-            $returnedValue = str_replace($containerJs, self::getCdnUrl() . '/', $returnedValue);
+            $embedCode = str_replace($containerJsUrl, $cdnUrl . '/', $embedCode);
         }
-        elseif (is_array($returnedValue))
+        elseif (is_array($embedCode))
         {
-            foreach ($returnedValue as $val) {
+            foreach ($embedCode as &$val) {
                 if (!empty($val['embedCode'])) {
-                    $val['embedCode'] = str_replace($containerJs, self::getCdnUrl() . '/', $val['embedCode']);
+                    $val['embedCode'] = str_replace($containerJsUrl, $cdnUrl . '/', $val['embedCode']);
                 }
             }
         }
-        $returnedValue = str_replace($containerJs, self::getCdnUrl() . '/', $returnedValue);
+        $embedCode = str_replace($containerJsUrl, $cdnUrl . '/', $embedCode);
     }
 
     private function getCdnUrl()
