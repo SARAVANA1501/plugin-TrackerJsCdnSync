@@ -1,9 +1,10 @@
 <?php
 
-namespace Piwik\Plugins\TrackerJsCdnSync\AwsS3;
+namespace Piwik\Plugins\TrackerJsCdnSync\tests\phpunit\AwsS3;
 
 use Aws\S3\S3Client;
 use PHPUnit\Framework\TestCase;
+use Piwik\Plugins\TrackerJsCdnSync\AwsS3\IOServiceForAwsS3;
 
 class IOServiceForAwsS3Test extends TestCase
 {
