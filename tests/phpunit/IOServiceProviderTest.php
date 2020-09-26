@@ -18,6 +18,17 @@ class IOServiceProviderTest extends TestCase
         $this->assertEquals(new IOServiceForAwsS3($config), $ioService);
     }
 
+    public function testGetIOServiceForBunnyCdn()
+    {
+        $config['type'] = 'bunny-cdn';
+        $config['storageZoneName'] = "test";
+        $config['apiAccessKey'] = "test-key";
+        $config['storageZoneRegion'] = "de";
+        $fileHandler = new IOServiceProvider($config);
+        $ioService = $fileHandler->GetIOService();
+        $this->assertEquals(new IOServiceForBunnyCdn($config), $ioService);
+    }
+
     public function testGetIOServiceThrowExceptionForInvalidConfig()
     {
         $config['type'] = 'test-type';
