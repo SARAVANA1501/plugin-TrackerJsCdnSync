@@ -3,7 +3,9 @@
   "description":"TrackerJS-CDN-Sync",
   "require":{
     "piwik/piwik": ">=2.16.0",
-    "aws/aws-sdk-php": "2.7.1"
+    "aws/aws-sdk-php": "2.7.1",
+    "ext-curl": "*",
+    "ext-json": "*"
   },
   "bin":["bin"],
   "config":{

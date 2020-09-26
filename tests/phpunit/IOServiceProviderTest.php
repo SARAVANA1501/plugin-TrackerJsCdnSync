@@ -4,6 +4,7 @@ namespace Piwik\Plugins\TrackerJsCdnSync\tests\phpunit;
 
 use PHPUnit\Framework\TestCase;
 use Piwik\Plugins\TrackerJsCdnSync\AwsS3\IOServiceForAwsS3;
+use Piwik\Plugins\TrackerJsCdnSync\BunnyCdn\IOServiceForBunnyCdn;
 use Piwik\Plugins\TrackerJsCdnSync\IOServiceProvider;
 
 class IOServiceProviderTest extends TestCase
