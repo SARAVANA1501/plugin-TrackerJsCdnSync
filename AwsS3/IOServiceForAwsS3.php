@@ -29,13 +29,13 @@ class IOServiceForAwsS3 implements IOService
     {
         switch ($this->config['auth-type']) {
             case 'IAM-Role':
-                return new S3Client([
+                return S3Client::factory([
                     'region' => $this->config['region'],
                     'version' => $this->config['version']
                 ]);
                 break;
             case 'IAM-User':
-                return new S3Client([
+                return S3Client::factory([
                     'region' => $this->config['region'],
                     'version' => $this->config['version'],
                     'credentials' => [
