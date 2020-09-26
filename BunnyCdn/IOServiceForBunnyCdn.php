@@ -21,12 +21,22 @@ class IOServiceForBunnyCdn implements IOService
     public function AddFile($file)
     {
         $baseName = basename($file);
-        $this->helper->uploadFile($file, "/" . $this->config['storageZoneName'] . "/" . $baseName);
+        try {
+            $this->helper->uploadFile($file, "/" . $this->config['storageZoneName'] . "/" . $baseName);
+        } catch (BunnyCDNStorageAuthenticationException $e) {
+        } catch (BunnyCDNStorageFileNotFoundException $e) {
+        } catch (BunnyCDNStorageException $e) {
+        }
     }
 
     public function DeleteFile($file)
     {
         $baseName = basename($file);
-        $this->helper->deleteObject("/" . $this->config['storageZoneName'] . "/" . $baseName);
+        try {
+            $this->helper->deleteObject("/" . $this->config['storageZoneName'] . "/" . $baseName);
+        } catch (BunnyCDNStorageAuthenticationException $e) {
+        } catch (BunnyCDNStorageFileNotFoundException $e) {
+        } catch (BunnyCDNStorageException $e) {
+        }
     }
 }
