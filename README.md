@@ -12,7 +12,10 @@ Tag-Manager container Delete
 ```
 
 ## Supported CDN
+```
 AWS S3
+Bunny CDN
+```
 
 ## Configure Aws S3 CDN with IAM Key and Secret
 ```
@@ -34,6 +37,15 @@ auth-type = "IAM-Role"
 bucket = "<Replace with your bucket>"
 version = "latest"
 region = "<Replace with your region>"
+```
+
+## Configure Bunny CDN
+```
+[TrackerJsCdnSync]
+type = "bunny-cdn"
+storageZoneName = "<Replace with your zone name>" <!--Example: test-bunny-name-->
+apiAccessKey = "<Replace with your api key>" <!--Password from FTP & API Access page-->
+storageZoneRegion = "<Replace with zone region>" <!--First two letter of domain name from FTP & API Access, example:de,sg-->
 ```
 
 ## Configure CDN Url for embed code
