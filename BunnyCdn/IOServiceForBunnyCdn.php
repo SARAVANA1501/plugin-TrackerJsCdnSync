@@ -26,6 +26,7 @@ class IOServiceForBunnyCdn implements IOService
 
     public function DeleteFile($file)
     {
-        $this->helper->deleteObject($file);
+        $baseName = basename($file);
+        $this->helper->deleteObject("/" . $this->config['storageZoneName'] . "/" . $baseName);
     }
 }
