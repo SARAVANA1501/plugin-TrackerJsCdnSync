@@ -27,6 +27,7 @@ version = "latest"
 region = "<Replace with your region>"
 key = "<Replace with your key>"
 secret = "<Replace with your secret>"
+folder-path = "<Replace with your folder path to store file>"
 ```
 
 ## Configure Aws S3 CDN with Role based access
@@ -37,6 +38,7 @@ auth-type = "IAM-Role"
 bucket = "<Replace with your bucket>"
 version = "latest"
 region = "<Replace with your region>"
+folder-path = "<Replace with your folder path to store file>"
 ```
 
 ## Configure Bunny CDN

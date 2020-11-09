@@ -10,24 +10,22 @@ use Piwik\Plugins\TrackerJsCdnSync\IOService;
 class IOServiceForAwsS3 implements IOService
 {
     private $config;
+    private $path;
 
     function __construct($config)
     {
         $this->config = $config;
+        $this->path = '';
+        if (isset($this->config['folder-path'])) {
+            $this->path = $this->config['folder-path'];
+        }
     }
 
     public function AddFile($file)
     {
-        if (isset($this->config['folder-path'])) {
-            return $this->GetClient()->putObject([
-                'Bucket' => $this->config['bucket'],
-                'Key' => $this->config['folder-path'] . '/' . basename($file),
-                'SourceFile' => $file
-            ]);
-        }
         return $this->GetClient()->putObject([
             'Bucket' => $this->config['bucket'],
-            'Key' => basename($file),
+            'Key' => $this->path . '/' . basename($file),
             'SourceFile' => $file
         ]);
     }
@@ -60,16 +58,9 @@ class IOServiceForAwsS3 implements IOService
 
     public function DeleteFile($file)
     {
-        if (isset($this->config['folder-path'])) {
-            $this->GetClient()->deleteObject([
-                'Bucket' => $this->config['bucket'],
-                'Key' => $this->config['folder-path'] . '/' . basename($file),
-            ]);
-        } else {
-            $this->GetClient()->deleteObject([
-                'Bucket' => $this->config['bucket'],
-                'Key' => basename($file)
-            ]);
-        }
+        $this->GetClient()->deleteObject([
+            'Bucket' => $this->config['bucket'],
+            'Key' => $this->path . '/' . basename($file),
+        ]);
     }
 }
