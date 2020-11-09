@@ -16,8 +16,8 @@ class IOServiceForAwsS3 implements IOService
     {
         $this->config = $config;
         $this->path = '';
-        if (isset($this->config['folder-path'])) {
-            $this->path = $this->config['folder-path'];
+        if (isset($this->config['folder-prefix'])) {
+            $this->path = $this->config['folder-prefix'] . '/';
         }
     }
 
@@ -25,7 +25,7 @@ class IOServiceForAwsS3 implements IOService
     {
         return $this->GetClient()->putObject([
             'Bucket' => $this->config['bucket'],
-            'Key' => $this->path . '/' . basename($file),
+            'Key' => $this->path . basename($file),
             'SourceFile' => $file
         ]);
     }
@@ -60,7 +60,7 @@ class IOServiceForAwsS3 implements IOService
     {
         $this->GetClient()->deleteObject([
             'Bucket' => $this->config['bucket'],
-            'Key' => $this->path . '/' . basename($file),
+            'Key' => $this->path . basename($file),
         ]);
     }
 }

@@ -40,7 +40,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['bucket'] = 'Test-Bucket';
         $config['version'] = 'latest';
         $config['region'] = 'Test-Region';
-        $config['folder-path'] = 'js';
+        $config['folder-prefix'] = 'js';
         $file = 'test.js';
 
         $awsClient_1 = $this->getMockBuilder(S3Client::class)
@@ -50,7 +50,7 @@ class IOServiceForAwsS3Test extends TestCase
 
         $awsClient_1->expects($this->once())->method('putObject')->with([
             'Bucket' => $config['bucket'],
-            'Key' => $config['folder-path'].'/'.basename($file),
+            'Key' => $config['folder-prefix'].'/'.basename($file),
             'SourceFile' => $file
         ]);
 
@@ -87,7 +87,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['bucket'] = 'Test-Bucket';
         $config['version'] = 'latest';
         $config['region'] = 'Test-Region';
-        $config['folder-path'] = 'js';
+        $config['folder-prefix'] = 'js';
         $file = 'test.js';
 
         $awsClient_1 = $this->getMockBuilder(S3Client::class)
@@ -97,7 +97,7 @@ class IOServiceForAwsS3Test extends TestCase
 
         $awsClient_1->expects($this->once())->method('deleteObject')->with([
             'Bucket' => $config['bucket'],
-            'Key' => $config['folder-path'].'/'.basename($file),
+            'Key' => $config['folder-prefix'].'/'.basename($file),
         ]);
 
         $s3 = new MockIOServiceForS3($awsClient_1, $config);
