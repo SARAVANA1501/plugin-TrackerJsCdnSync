@@ -18,7 +18,14 @@ class IOServiceForAwsS3 implements IOService
 
     public function AddFile($file)
     {
-        $result = $this->GetClient()->putObject([
+        if (isset($this->config['folder-path'])) {
+            return $this->GetClient()->putObject([
+                'Bucket' => $this->config['bucket'],
+                'Key' => $this->config['folder-path'] . '/' . basename($file),
+                'SourceFile' => $file
+            ]);
+        }
+        return $this->GetClient()->putObject([
             'Bucket' => $this->config['bucket'],
             'Key' => basename($file),
             'SourceFile' => $file
@@ -53,9 +60,16 @@ class IOServiceForAwsS3 implements IOService
 
     public function DeleteFile($file)
     {
-        $this->GetClient()->deleteObject([
-            'Bucket' => $this->config['bucket'],
-            'Key'    => basename($file)
-        ]);
+        if (isset($this->config['folder-path'])) {
+            $this->GetClient()->deleteObject([
+                'Bucket' => $this->config['bucket'],
+                'Key' => $this->config['folder-path'] . '/' . basename($file),
+            ]);
+        } else {
+            $this->GetClient()->deleteObject([
+                'Bucket' => $this->config['bucket'],
+                'Key' => basename($file)
+            ]);
+        }
     }
 }
