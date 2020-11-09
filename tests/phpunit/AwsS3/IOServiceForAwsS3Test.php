@@ -33,6 +33,30 @@ class IOServiceForAwsS3Test extends TestCase
         $s3->AddFile($file);
     }
 
+    public function testAddFileWhenFolderPathIsPassed()
+    {
+        $config['type'] = 'aws-s3';
+        $config['auth-type'] = 'IAM-Role';
+        $config['bucket'] = 'Test-Bucket';
+        $config['version'] = 'latest';
+        $config['region'] = 'Test-Region';
+        $config['folder-path'] = 'js';
+        $file = 'test.js';
+
+        $awsClient_1 = $this->getMockBuilder(S3Client::class)
+            ->addMethods(['putObject'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $awsClient_1->expects($this->once())->method('putObject')->with([
+            'Bucket' => $config['bucket'],
+            'Key' => $config['folder-path'].'/'.basename($file),
+            'SourceFile' => $file
+        ]);
+
+        $s3 = new MockIOServiceForS3($awsClient_1, $config);
+        $s3->AddFile($file);
+    }
     public function testDeleteFile()
     {
         $config['type'] = 'aws-s3';
@@ -50,6 +74,30 @@ class IOServiceForAwsS3Test extends TestCase
         $awsClient_1->expects($this->once())->method('deleteObject')->with([
             'Bucket' => $config['bucket'],
             'Key' => basename($file)
+        ]);
+
+        $s3 = new MockIOServiceForS3($awsClient_1, $config);
+        $s3->DeleteFile($file);
+    }
+
+    public function testDeleteFileWhenFolderPathIsPassed()
+    {
+        $config['type'] = 'aws-s3';
+        $config['auth-type'] = 'IAM-Role';
+        $config['bucket'] = 'Test-Bucket';
+        $config['version'] = 'latest';
+        $config['region'] = 'Test-Region';
+        $config['folder-path'] = 'js';
+        $file = 'test.js';
+
+        $awsClient_1 = $this->getMockBuilder(S3Client::class)
+            ->addMethods(['deleteObject'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $awsClient_1->expects($this->once())->method('deleteObject')->with([
+            'Bucket' => $config['bucket'],
+            'Key' => $config['folder-path'].'/'.basename($file),
         ]);
 
         $s3 = new MockIOServiceForS3($awsClient_1, $config);
