@@ -1,7 +1,7 @@
 {
     "name": "TrackerJsCdnSync",
     "description": "Sync your tracker javascript files to CDN",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "license": "MIT",
     "keywords": ["TrackerJs Cdn Sync", "cdn", "trackerjs", "matomojs"],
     "homepage": "https://github.com/SARAVANA1501/plugin-TrackerJsCdnSync",
