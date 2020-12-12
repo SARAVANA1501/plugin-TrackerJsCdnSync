@@ -104,14 +104,14 @@ class IOServiceForAwsS3Test extends TestCase
         $s3->DeleteFile($file);
     }
 
-    public function xtestGetClientWithRoleBasedAccess()
+    public function testGetClientWithRoleBasedAccess()
     {
         $config['type'] = 'aws-s3';
         $config['auth-type'] = 'IAM-Role';
         $config['Bucket'] = '';
         $config['version'] = 'latest';
         $config['region'] = '';
-        $expectedClient = S3Client::factory([
+        $expectedClient = new S3Client([
             'region' => $config['region'],
             'version' => $config['version']
         ]);
@@ -121,7 +121,7 @@ class IOServiceForAwsS3Test extends TestCase
         $this->assertEquals($expectedClient, $awsClient->GetClient());
     }
 
-    public function xtestGetClientWithIAMUserAccess()
+    public function testGetClientWithIAMUserAccess()
     {
         $config['type'] = 'aws-s3';
         $config['auth-type'] = 'IAM-User';
@@ -130,7 +130,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['region'] = 'my-region';
         $config['key'] = 'my-access-key-id';
         $config['secret'] = '';
-        $expectedClient = S3Client::factory([
+        $expectedClient = new S3Client([
             'region' => $config['region'],
             'version' => $config['version'],
             'credentials' => [
