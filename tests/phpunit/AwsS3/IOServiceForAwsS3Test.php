@@ -15,7 +15,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['auth-type'] = 'IAM-Role';
         $config['bucket'] = 'Test-Bucket';
         $config['version'] = 'latest';
-        $config['region'] = 'Test-Region';
+        $config['region'] = 'eu-west-1';
         $file = 'test.js';
 
         $awsClient_1 = $this->getMockBuilder(S3Client::class)
@@ -39,7 +39,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['auth-type'] = 'IAM-Role';
         $config['bucket'] = 'Test-Bucket';
         $config['version'] = 'latest';
-        $config['region'] = 'Test-Region';
+        $config['region'] = 'eu-west-1';
         $config['folder-prefix'] = 'js';
         $file = 'test.js';
 
@@ -63,7 +63,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['auth-type'] = 'IAM-Role';
         $config['bucket'] = 'Test-Bucket';
         $config['version'] = 'latest';
-        $config['region'] = 'Test-Region';
+        $config['region'] = 'eu-west-1';
         $file = 'test.js';
 
         $awsClient_1 = $this->getMockBuilder(S3Client::class)
@@ -86,7 +86,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['auth-type'] = 'IAM-Role';
         $config['bucket'] = 'Test-Bucket';
         $config['version'] = 'latest';
-        $config['region'] = 'Test-Region';
+        $config['region'] = 'eu-west-1';
         $config['folder-prefix'] = 'js';
         $file = 'test.js';
 
@@ -110,7 +110,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['auth-type'] = 'IAM-Role';
         $config['Bucket'] = '';
         $config['version'] = 'latest';
-        $config['region'] = '';
+        $config['region'] = 'eu-west-1';
         $expectedClient = new S3Client([
             'region' => $config['region'],
             'version' => $config['version']
@@ -127,7 +127,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['auth-type'] = 'IAM-User';
         $config['bucket'] = 'my-bucket';
         $config['version'] = 'latest';
-        $config['region'] = 'my-region';
+        $config['region'] = 'eu-west-1';
         $config['key'] = 'my-access-key-id';
         $config['secret'] = '';
         $expectedClient = new S3Client([
@@ -150,7 +150,7 @@ class IOServiceForAwsS3Test extends TestCase
         $config['auth-type'] = 'test';
         $config['bucket'] = '';
         $config['version'] = 'latest';
-        $config['region'] = '';
+        $config['region'] = 'eu-west-1';
 
         $awsClient = new IOServiceForAwsS3($config);
         $this->expectException(\Exception::class);
