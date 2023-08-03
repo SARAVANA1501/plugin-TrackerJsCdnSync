@@ -56,3 +56,8 @@ It will update the CDN Url in tag-manager's embed code.
 [TrackerJsCdnSync]
 cdnUrl = "http://cdn.example.com/matomo-cdn" 
 ```
+
+## Setup development environment
+```
+brew install php
+```
