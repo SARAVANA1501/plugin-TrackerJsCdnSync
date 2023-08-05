@@ -22,6 +22,7 @@ class TagManagerEmbedCodeGenerator
         if (is_string($embedCode))
         {
             $embedCode = str_replace($containerJsUrl, $cdnUrl . '/', $embedCode);
+            return;
         }
         elseif (is_array($embedCode))
         {
@@ -30,6 +31,7 @@ class TagManagerEmbedCodeGenerator
                     $val['embedCode'] = str_replace($containerJsUrl, $cdnUrl . '/', $val['embedCode']);
                 }
             }
+            return;
         }
         $embedCode = str_replace($containerJsUrl, $cdnUrl . '/', $embedCode);
     }
